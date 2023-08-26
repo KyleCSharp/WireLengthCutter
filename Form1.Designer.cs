@@ -42,6 +42,7 @@
             this.httpswwwkyleriglercomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createdByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kyleRiglerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitButton = new System.Windows.Forms.Button();
             zeroButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -97,7 +98,6 @@
             this.currentLengthNumber.TabIndex = 3;
             this.currentLengthNumber.Text = "Get wire starting point\r\n";
             this.currentLengthNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
             // 
             // cutButton
             // 
@@ -186,6 +186,22 @@
             this.kyleRiglerToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.kyleRiglerToolStripMenuItem.Text = "Kyle Rigler";
             // 
+            // exitButton
+            // 
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.BackColor = System.Drawing.Color.DimGray;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.exitButton.Location = new System.Drawing.Point(1593, 40);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(54, 42);
+            this.exitButton.TabIndex = 8;
+            this.exitButton.Text = "X";
+            this.exitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
             // MCCutterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,6 +209,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkRed;
             this.ClientSize = new System.Drawing.Size(1659, 916);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.countNumberLabel);
             this.Controls.Add(this.countTextLabel);
             this.Controls.Add(this.cutButton);
@@ -229,6 +246,7 @@
         private System.Windows.Forms.ToolStripMenuItem httpswwwkyleriglercomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createdByToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kyleRiglerToolStripMenuItem;
+        private System.Windows.Forms.Button exitButton;
     }
 }
 

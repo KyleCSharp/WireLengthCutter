@@ -10,10 +10,15 @@ namespace CarolinaPowerMCCutter
     {
         public MCCutterForm()
         {
+            
             InitializeComponent();
+            // Make the form fullscreen right from the constructor
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            Cursor.Show();
             this.MouseWheel += MCCutterForm_MouseWheel;
         }
-
         int feetValue = 0;
         double inchesValue = 0;
         int countNumber = 0;
@@ -97,6 +102,13 @@ namespace CarolinaPowerMCCutter
         {
             base.OnClosed(e);
             this.MouseWheel -= MCCutterForm_MouseWheel;
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            
+            this.Close();
+            
         }
     }
 }
