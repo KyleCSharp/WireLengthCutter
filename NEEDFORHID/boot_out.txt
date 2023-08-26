@@ -1,0 +1,3 @@
+Adafruit CircuitPython 8.2.4 on 2023-08-22; Adafruit Rotary Trinkey M0 with samd21e18
+Board ID:adafruit_rotary_trinkey_m0
+UID:B2704C2C534654512020203621020CFF
