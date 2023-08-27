@@ -15,11 +15,6 @@ namespace CarolinaPowerMCCutter
             this.initialNotches = initialNotches;
             totalNotchesLabel.Text = initialNotches.ToString(); // Initialize the label
         }
-        public void UpdateLiveNotchesLabel(int notches)
-        {
-            // Update the label text with the live notches value
-            totalNotchesLabel.Text = notches.ToString();
-        }
 
         public void IncrementNotchesCounter()
         {

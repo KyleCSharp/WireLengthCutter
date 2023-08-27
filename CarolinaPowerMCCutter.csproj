@@ -94,11 +94,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="NEEDFORHID\.fseventsd\no_log" />
-    <None Include="NEEDFORHID\.metadata_never_index" />
-    <None Include="NEEDFORHID\.Trashes" />
-    <None Include="NEEDFORHID\.vscode\settings.json" />
-    <None Include="NEEDFORHID\code.py" />
+    <None Include="ForMicroController\.fseventsd\no_log" />
+    <None Include="ForMicroController\.metadata_never_index" />
+    <None Include="ForMicroController\.Trashes" />
+    <None Include="ForMicroController\.vscode\settings.json" />
+    <None Include="ForMicroController\code.py" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -120,10 +120,10 @@
     <None Include="Resources\b8cb72050b246d57a0220425c319a7f7_t.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NEEDFORHID\boot_out.txt" />
+    <Content Include="ForMicroController\boot_out.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="NEEDFORHID\lib\" />
+    <Folder Include="ForMicroController\lib\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
