@@ -7,12 +7,13 @@ namespace CarolinaPowerMCCutter
     {
         private int totalNotchesCounter = 0;
         private int initialNotches = 0;
-        private int enteredNotchesValue = 5; // Default value
+        private int enteredNotchesValue = 5;
 
         public CalibrationForm(int initialNotches)
         {
             InitializeComponent();
             this.initialNotches = initialNotches;
+            totalNotchesLabel.Text = initialNotches.ToString(); // Initialize the label
         }
 
         public void IncrementNotchesCounter()
@@ -20,7 +21,10 @@ namespace CarolinaPowerMCCutter
             totalNotchesCounter++;
             totalNotchesLabel.Text = totalNotchesCounter.ToString();
         }
-
+        public int TotalNotchesTravelled
+        {
+            get { return totalNotchesCounter; }
+        }
         public int GetTotalNotchesCounter()
         {
             return totalNotchesCounter;

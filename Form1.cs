@@ -24,7 +24,7 @@ namespace CarolinaPowerMCCutter
         double inchesValue = 0;
         int countNumber = 0;
         private const int InchesPerFoot = 12;
-        private const double InchesPerNotch = 0.125;
+
         private double EncoderNotchesPerInch = 0.0;
 
         private void zeroButton_Click(object sender, EventArgs e)
@@ -96,7 +96,8 @@ namespace CarolinaPowerMCCutter
                 if (result == DialogResult.OK)
                 {
                     int enteredNotches = calibrationForm.GetEnteredNotchesValue();
-                    EncoderNotchesPerInch = 1.0 / enteredNotches;
+                    totalNotchesTravelled = enteredNotches; // Update the totalNotchesTravelled
+                    EncoderNotchesPerInch = totalNotchesTravelled; // Update the EncoderNotchesPerInch
                 }
             }
         }
@@ -113,13 +114,10 @@ namespace CarolinaPowerMCCutter
 
         private void CalibrateEncoder()
         {
-            // Measure the encoder's actual resolution and update EncoderNotchesPerInch
             double knownDistanceInInches = 1.0;
-            int totalNotchesTravelled = 5;
-
+            int totalNotchesTravelled = 5; // Set an initial value
             double calculatedNotchesPerInch = (double)totalNotchesTravelled / knownDistanceInInches;
             EncoderNotchesPerInch = calculatedNotchesPerInch;
-            // Replace with actual measured value based on your calibration process.
         }
 
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,7 +125,6 @@ namespace CarolinaPowerMCCutter
             string emailAddress = "kyle.rigler@carolinapower.com";
             string subject = "MC Cutter help";
 
-            // Generate the mailto URL
             string mailtoUrl = $"mailto:{emailAddress}?subject={subject}";
             System.Diagnostics.Process.Start(mailtoUrl);
         }
