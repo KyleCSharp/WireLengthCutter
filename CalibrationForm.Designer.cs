@@ -31,6 +31,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.totalNotchesLabel = new System.Windows.Forms.Label();
             this.Backbutton = new System.Windows.Forms.Button();
+            this.calibrationFormTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -63,12 +65,30 @@
             this.Backbutton.UseVisualStyleBackColor = true;
             this.Backbutton.Click += new System.EventHandler(this.backToMainButton_Click);
             // 
+            // calibrationFormTextBox
+            // 
+            this.calibrationFormTextBox.Location = new System.Drawing.Point(646, 360);
+            this.calibrationFormTextBox.Name = "calibrationFormTextBox";
+            this.calibrationFormTextBox.Size = new System.Drawing.Size(142, 20);
+            this.calibrationFormTextBox.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(571, 332);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(217, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "please enter number given in text box below ";
+            // 
             // CalibrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkRed;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.calibrationFormTextBox);
             this.Controls.Add(this.Backbutton);
             this.Controls.Add(this.totalNotchesLabel);
             this.Controls.Add(this.button1);
@@ -85,5 +105,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label totalNotchesLabel;
         private System.Windows.Forms.Button Backbutton;
+        private System.Windows.Forms.TextBox calibrationFormTextBox;
+        private System.Windows.Forms.Label label1;
     }
 }
