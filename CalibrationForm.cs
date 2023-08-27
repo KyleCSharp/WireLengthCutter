@@ -5,39 +5,45 @@ namespace CarolinaPowerMCCutter
 {
     public partial class CalibrationForm : Form
     {
-        public int totalNotchesCounter = 0;
-        
         public int enteredNotchesValue = 5;
+        public int notchCounter = 0;
 
         public CalibrationForm()
         {
             InitializeComponent();
             totalNotchesLabel.Text = "0"; // Initialize the label
+
+            // Subscribe to the MouseWheel event of the form
+            this.MouseWheel += CalibrationForm_MouseWheel;
         }
 
-
-        public int TotalNotchesTravelled
+        private void CalibrationForm_MouseWheel(object sender, MouseEventArgs e)
         {
-            get { return totalNotchesCounter; }
+            // Check if the CTRL key is pressed while scrolling
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                // Increment or decrement notchCounter based on the scrolling direction
+                int delta = e.Delta > 0 ? 1 : -1;
+                UpdateNotchCounter(delta);
+            }
         }
-        public int GetTotalNotchesCounter()
+
+        public void UpdateNotchCounter(int delta)
         {
-            return totalNotchesCounter;
+            notchCounter += delta;
+            totalNotchesLabel.Text = notchCounter.ToString();
         }
 
         public int GetEnteredNotchesValue()
         {
             return enteredNotchesValue;
         }
+
         public void OnNotchesUpdated(int notches)
         {
             totalNotchesLabel.Text = notches.ToString();
         }
-        public void IncrementNotchesCounter()
-        {
-            totalNotchesCounter++;
-            totalNotchesLabel.Text = totalNotchesCounter.ToString();
-        }
+
         public void okButton_Click(object sender, EventArgs e)
         {
             if (int.TryParse(calibrationFormTextBox.Text, out int enteredValue))
