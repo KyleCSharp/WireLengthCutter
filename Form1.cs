@@ -5,8 +5,8 @@ namespace CarolinaPowerMCCutter
 {
     public partial class MCCutterForm : Form
     {
-        private CalibrationForm calibrationForm;
-        private int totalNotchesTravelled = 0;
+        public CalibrationForm calibrationForm;
+        public int totalNotchesTravelled = 0;
         public event Action<int> NotchesUpdated;
         public MCCutterForm(CalibrationForm calForm)
         {
@@ -18,18 +18,17 @@ namespace CarolinaPowerMCCutter
             this.MouseWheel += MCCutterForm_MouseWheel;
             this.calibrationForm = calForm;
             CalibrateEncoder();
-            calibrationForm = new CalibrationForm(0);
             NotchesUpdated += calibrationForm.OnNotchesUpdated;
         }
 
         int feetValue = 0;
         double inchesValue = 0;
         int countNumber = 0;
-        private const int InchesPerFoot = 12;
+        public const int InchesPerFoot = 12;
 
-        private double EncoderNotchesPerInch = 0.0;
+        public double EncoderNotchesPerInch = 0.0;
 
-        private void zeroButton_Click(object sender, EventArgs e)
+        public void zeroButton_Click(object sender, EventArgs e)
         {
             feetValue = 0;
             inchesValue = 0;
@@ -39,7 +38,7 @@ namespace CarolinaPowerMCCutter
             UpdateCurrentLengthLabel();
         }
 
-        private void cutButton_Click(object sender, EventArgs e)
+        public void cutButton_Click(object sender, EventArgs e)
         {
             countNumber++;
             countNumberLabel.Text = countNumber.ToString();
@@ -49,7 +48,7 @@ namespace CarolinaPowerMCCutter
             UpdateCurrentLengthLabel();
         }
 
-        private void MCCutterForm_MouseWheel(object sender, MouseEventArgs e)
+        public void MCCutterForm_MouseWheel(object sender, MouseEventArgs e)
         {
             int delta = e.Delta;
 
@@ -82,18 +81,24 @@ namespace CarolinaPowerMCCutter
                     }
                 }
 
-                UpdateCurrentLengthLabel();
-                calibrationForm.IncrementNotchesCounter();
-            }
-            // Notify the event subscribers with the live notches value
-            NotchesUpdated?.Invoke(totalNotchesTravelled);
-    }
+                totalNotchesTravelled++; // Update the totalNotchesTravelled
 
-        private void ToolStripMenuItem_Calibrate_Click(object sender, EventArgs e)
+                // Update the totalNotchesLabel in the existing CalibrationForm instance
+                calibrationForm.OnNotchesUpdated(totalNotchesTravelled);
+
+                UpdateCurrentLengthLabel();
+
+                // Update the NotchesUpdated event subscribers
+                NotchesUpdated?.Invoke(totalNotchesTravelled);
+            }
+        }
+
+
+        public void ToolStripMenuItem_Calibrate_Click(object sender, EventArgs e)
         {
             int initialNotches = calibrationForm.GetTotalNotchesCounter();
 
-            using (CalibrationForm calibrationForm = new CalibrationForm(initialNotches))
+            using (CalibrationForm calibrationForm = new CalibrationForm())
             {
                 DialogResult result = calibrationForm.ShowDialog();
 
@@ -106,17 +111,17 @@ namespace CarolinaPowerMCCutter
             }
         }
 
-        private void UpdateCurrentLengthLabel()
+        public void UpdateCurrentLengthLabel()
         {
             currentLengthNumber.Text = $"{feetValue}' {inchesValue:F3}\"";
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
+        public void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void CalibrateEncoder()
+        public void CalibrateEncoder()
         {
             double knownDistanceInInches = 1.0;
             int totalNotchesTravelled = 5; // Set an initial value
@@ -124,7 +129,7 @@ namespace CarolinaPowerMCCutter
             EncoderNotchesPerInch = calculatedNotchesPerInch;
         }
 
-        private void ToolStripMenuItem_Click(object sender, EventArgs e)
+        public void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string emailAddress = "kyle.rigler@carolinapower.com";
             string subject = "MC Cutter help";

@@ -5,22 +5,17 @@ namespace CarolinaPowerMCCutter
 {
     public partial class CalibrationForm : Form
     {
-        private int totalNotchesCounter = 0;
-        private int initialNotches = 0;
-        private int enteredNotchesValue = 5;
+        public int totalNotchesCounter = 0;
+        
+        public int enteredNotchesValue = 5;
 
-        public CalibrationForm(int initialNotches)
+        public CalibrationForm()
         {
             InitializeComponent();
-            this.initialNotches = initialNotches;
-            totalNotchesLabel.Text = initialNotches.ToString(); // Initialize the label
+            totalNotchesLabel.Text = "0"; // Initialize the label
         }
 
-        public void IncrementNotchesCounter()
-        {
-            totalNotchesCounter++;
-            totalNotchesLabel.Text = totalNotchesCounter.ToString();
-        }
+
         public int TotalNotchesTravelled
         {
             get { return totalNotchesCounter; }
@@ -38,7 +33,12 @@ namespace CarolinaPowerMCCutter
         {
             totalNotchesLabel.Text = notches.ToString();
         }
-        private void okButton_Click(object sender, EventArgs e)
+        public void IncrementNotchesCounter()
+        {
+            totalNotchesCounter++;
+            totalNotchesLabel.Text = totalNotchesCounter.ToString();
+        }
+        public void okButton_Click(object sender, EventArgs e)
         {
             if (int.TryParse(calibrationFormTextBox.Text, out int enteredValue))
             {
@@ -48,7 +48,7 @@ namespace CarolinaPowerMCCutter
             this.DialogResult = DialogResult.OK;
         }
 
-        private void backToMainButton_Click(object sender, EventArgs e)
+        public void backToMainButton_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
