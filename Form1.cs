@@ -7,7 +7,7 @@ namespace CarolinaPowerMCCutter
     {
         private CalibrationForm calibrationForm;
         private int totalNotchesTravelled = 0;
-
+        public event Action<int> NotchesUpdated;
         public MCCutterForm(CalibrationForm calForm)
         {
             InitializeComponent();
@@ -18,6 +18,8 @@ namespace CarolinaPowerMCCutter
             this.MouseWheel += MCCutterForm_MouseWheel;
             this.calibrationForm = calForm;
             CalibrateEncoder();
+            calibrationForm = new CalibrationForm(0);
+            NotchesUpdated += calibrationForm.OnNotchesUpdated;
         }
 
         int feetValue = 0;
@@ -83,7 +85,9 @@ namespace CarolinaPowerMCCutter
                 UpdateCurrentLengthLabel();
                 calibrationForm.IncrementNotchesCounter();
             }
-        }
+            // Notify the event subscribers with the live notches value
+            NotchesUpdated?.Invoke(totalNotchesTravelled);
+    }
 
         private void ToolStripMenuItem_Calibrate_Click(object sender, EventArgs e)
         {

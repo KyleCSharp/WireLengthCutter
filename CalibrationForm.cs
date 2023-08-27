@@ -15,6 +15,11 @@ namespace CarolinaPowerMCCutter
             this.initialNotches = initialNotches;
             totalNotchesLabel.Text = initialNotches.ToString(); // Initialize the label
         }
+        public void UpdateLiveNotchesLabel(int notches)
+        {
+            // Update the label text with the live notches value
+            totalNotchesLabel.Text = notches.ToString();
+        }
 
         public void IncrementNotchesCounter()
         {
@@ -34,7 +39,10 @@ namespace CarolinaPowerMCCutter
         {
             return enteredNotchesValue;
         }
-
+        public void OnNotchesUpdated(int notches)
+        {
+            totalNotchesLabel.Text = notches.ToString();
+        }
         private void okButton_Click(object sender, EventArgs e)
         {
             if (int.TryParse(calibrationFormTextBox.Text, out int enteredValue))
