@@ -7,6 +7,7 @@ namespace CarolinaPowerMCCutter
     public partial class MCCutterForm : Form
     {
         private CalibrationForm calibrationForm;
+        private int totalNotches = 0;
         public MCCutterForm(CalibrationForm calForm)
         {
             InitializeComponent();
@@ -82,7 +83,7 @@ namespace CarolinaPowerMCCutter
                 }
 
                 UpdateCurrentLengthLabel();
-                calibrationForm.UpdateTotalNotches((int)notchChange); // Update total notches in CalibrationForm
+                calibrationForm.UpdateNotches((int)notchChange); // Update total notches in CalibrationForm
             }
         }
 
@@ -113,15 +114,19 @@ namespace CarolinaPowerMCCutter
         }
         private void ToolStripMenuItem_Calibrate_Click(object sender, EventArgs e)
         {
+            // Store the initial notch count
+            int initialNotches = totalNotches; // Assuming totalNotches is the current notch count
+
             // Create and show the CalibrationForm
-            using (CalibrationForm calibrationForm = new CalibrationForm())
+            using (CalibrationForm calibrationForm = new CalibrationForm(initialNotches))
             {
                 DialogResult result = calibrationForm.ShowDialog();
 
                 // Check if the user clicked OK or Back
                 if (result == DialogResult.OK)
                 {
-                    EncoderNotchesPerInch = calibrationForm.GetCalibratedNotchesPerInch();
+                    int notchChange = calibrationForm.GetNotchChange();
+                    EncoderNotchesPerInch = 1.0 / notchChange; // Calculate the encoder notches per inch
                 }
                 // Handle Back button scenario
                 else if (result == DialogResult.Cancel)
@@ -130,13 +135,15 @@ namespace CarolinaPowerMCCutter
                 }
             }
         }
+
+
         private void CalibrateEncoder()
         {
             // Measure the encoder's actual resolution and update EncoderNotchesPerInch
             // For example: EncoderNotchesPerInch = measuredValue;
             // Measure the encoder's actual resolution and update EncoderNotchesPerInch
             double knownDistanceInInches = 1.0; // For example, you rotated the encoder 1 inch
-            int totalNotchesTravelled = 120;    // For example, the encoder reported 120 notches
+            int totalNotchesTravelled = 5;    // For example, the encoder reported 5 notches back to the computer
 
             double calculatedNotchesPerInch = (double)totalNotchesTravelled / knownDistanceInInches;
             EncoderNotchesPerInch = calculatedNotchesPerInch;

@@ -13,43 +13,44 @@ namespace CarolinaPowerMCCutter
     public partial class CalibrationForm : Form
     {
         private int totalNotches = 0;
-        public CalibrationForm()
+        private int initialNotches = 0; // Store the initial notch count
+       
+
+        public CalibrationForm(int initialNotches)
         {
             InitializeComponent();
-        }
-        public void UpdateTotalNotchesLabel(int value)
-        {
-            totalNotchesLabel.Text = value.ToString();
-        }
-        public int GetCalibratedNotchesPerInch()
-        {
-            return totalNotches;
+            this.initialNotches = initialNotches;
         }
 
-        public void UpdateTotalNotches(int notchChange)
+      
+
+        public int GetInitialNotches()
         {
-            totalNotches += notchChange;
-            totalNotchesLabel.Text = totalNotches.ToString();
+            return initialNotches;
+        }
+        public int GetNotchChange()
+        {
+            // Return the calculated notch change
+            return totalNotches - initialNotches;
         }
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            // Parse and store the total notches value from the label
-            if (int.TryParse(totalNotchesLabel.Text, out totalNotches))
-            {
-                MessageBox.Show($"Total Notches: {totalNotches}", "Debug Info");
-                this.DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("Invalid total notches value.", "Error");
-            }
+            // Close the CalibrationForm
+            this.DialogResult = DialogResult.OK;
         }
 
         private void backToMainButton_Click(object sender, EventArgs e)
         {
-            // Close the CalibrationForm without updating the EncoderNotchesPerInch
+            // Close the CalibrationForm without updating the notch change
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        // Handle encoder movement and update totalNotches
+        public void UpdateNotches(int currentNotches)
+        {
+            totalNotches = currentNotches;
+            totalNotchesLabel.Text = totalNotches.ToString();
         }
     }
 }
