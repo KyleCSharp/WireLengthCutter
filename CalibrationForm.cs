@@ -26,17 +26,23 @@ namespace CarolinaPowerMCCutter
             return totalNotches;
         }
 
+        public void UpdateTotalNotches(int notchChange)
+        {
+            totalNotches += notchChange;
+            totalNotchesLabel.Text = totalNotches.ToString();
+        }
+
         private void okButton_Click(object sender, EventArgs e)
         {
             // Parse and store the total notches value from the label
             if (int.TryParse(totalNotchesLabel.Text, out totalNotches))
             {
+                MessageBox.Show($"Total Notches: {totalNotches}", "Debug Info");
                 this.DialogResult = DialogResult.OK;
             }
             else
             {
-                // Display an error message if the parsing fails
-                MessageBox.Show("Invalid total notches value.");
+                MessageBox.Show("Invalid total notches value.", "Error");
             }
         }
 

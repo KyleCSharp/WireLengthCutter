@@ -82,9 +82,8 @@ namespace CarolinaPowerMCCutter
                 }
 
                 UpdateCurrentLengthLabel();
-                calibrationForm.UpdateTotalNotchesLabel((int)Math.Abs(notchChange)); // Pass the updated notch count
+                calibrationForm.UpdateTotalNotches((int)notchChange); // Update total notches in CalibrationForm
             }
-           
         }
 
         private void ToolStripMenuItem_Click(object sender, EventArgs e)
