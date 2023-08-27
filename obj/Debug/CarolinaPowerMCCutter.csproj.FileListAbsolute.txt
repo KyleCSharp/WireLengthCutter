@@ -22,3 +22,4 @@ D:\Repos\CarolinaPowerMCCutter\CarolinaPowerMCCutter\bin\Debug\RJCP.SerialPortSt
 D:\Repos\CarolinaPowerMCCutter\CarolinaPowerMCCutter\bin\Debug\RJCP.SerialPortStream.xml
 D:\Repos\CarolinaPowerMCCutter\CarolinaPowerMCCutter\bin\Debug\System.ValueTuple.xml
 D:\Repos\CarolinaPowerMCCutter\CarolinaPowerMCCutter\obj\Debug\CarolinaPowerMCCutter.csproj.CopyComplete
+D:\Repos\CarolinaPowerMCCutter\CarolinaPowerMCCutter\obj\Debug\CarolinaPowerMCCutter.CalibrationForm.resources

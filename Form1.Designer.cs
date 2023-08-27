@@ -43,6 +43,7 @@
             this.createdByToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kyleRiglerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitButton = new System.Windows.Forms.Button();
+            this.calibrateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             zeroButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -152,7 +153,8 @@
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.emailToolStripMenuItem,
-            this.createdByToolStripMenuItem});
+            this.createdByToolStripMenuItem,
+            this.calibrateToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.helpToolStripMenuItem.Text = "Support";
@@ -162,7 +164,7 @@
             this.emailToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.httpswwwkyleriglercomToolStripMenuItem});
             this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
-            this.emailToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.emailToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.emailToolStripMenuItem.Text = "Email ";
             // 
             // httpswwwkyleriglercomToolStripMenuItem
@@ -177,7 +179,7 @@
             this.createdByToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.kyleRiglerToolStripMenuItem});
             this.createdByToolStripMenuItem.Name = "createdByToolStripMenuItem";
-            this.createdByToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.createdByToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createdByToolStripMenuItem.Text = "Created by";
             // 
             // kyleRiglerToolStripMenuItem
@@ -201,6 +203,13 @@
             this.exitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // calibrateToolStripMenuItem
+            // 
+            this.calibrateToolStripMenuItem.Name = "calibrateToolStripMenuItem";
+            this.calibrateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.calibrateToolStripMenuItem.Text = "Calibrate";
+            this.calibrateToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Calibrate_Click);
             // 
             // MCCutterForm
             // 
@@ -247,6 +256,7 @@
         private System.Windows.Forms.ToolStripMenuItem createdByToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kyleRiglerToolStripMenuItem;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.ToolStripMenuItem calibrateToolStripMenuItem;
     }
 }
 
