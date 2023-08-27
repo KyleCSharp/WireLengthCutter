@@ -7,7 +7,7 @@ namespace CarolinaPowerMCCutter
     public partial class MCCutterForm : Form
     {
         private CalibrationForm calibrationForm;
-        public MCCutterForm()
+        public MCCutterForm(CalibrationForm calForm)
         {
             InitializeComponent();
             // Make the form fullscreen right from the constructor
@@ -16,7 +16,7 @@ namespace CarolinaPowerMCCutter
             this.StartPosition = FormStartPosition.CenterScreen;
             Cursor.Show();
             this.MouseWheel += MCCutterForm_MouseWheel;
-            this.calibrationForm = calibrationForm;
+            this.calibrationForm = calForm;
             // Calibrate the encoder by measuring actual EncoderNotchesPerInch value
             CalibrateEncoder();
         }

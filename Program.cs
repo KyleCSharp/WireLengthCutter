@@ -16,7 +16,11 @@ namespace CarolinaPowerMCCutter
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MCCutterForm());
+
+            CalibrationForm calibrationForm = new CalibrationForm();
+            MCCutterForm mccutterForm = new MCCutterForm(calibrationForm);
+
+            Application.Run(mccutterForm);
         }
     }
 }
