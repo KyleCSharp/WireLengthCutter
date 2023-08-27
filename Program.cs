@@ -17,7 +17,7 @@ namespace CarolinaPowerMCCutter
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            CalibrationForm calibrationForm = new CalibrationForm();
+            CalibrationForm calibrationForm = new CalibrationForm(0); // Provide initial notches as 0
             MCCutterForm mccutterForm = new MCCutterForm(calibrationForm);
 
             Application.Run(mccutterForm);

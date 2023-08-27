@@ -114,8 +114,7 @@ namespace CarolinaPowerMCCutter
         }
         private void ToolStripMenuItem_Calibrate_Click(object sender, EventArgs e)
         {
-            // Store the initial notch count
-            int initialNotches = totalNotches; // Assuming totalNotches is the current notch count
+            int initialNotches = calibrationForm.GetInitialNotches(); // Store the initial notch count
 
             // Create and show the CalibrationForm
             using (CalibrationForm calibrationForm = new CalibrationForm(initialNotches))
@@ -125,8 +124,8 @@ namespace CarolinaPowerMCCutter
                 // Check if the user clicked OK or Back
                 if (result == DialogResult.OK)
                 {
-                    int notchChange = calibrationForm.GetNotchChange();
-                    EncoderNotchesPerInch = 1.0 / notchChange; // Calculate the encoder notches per inch
+                    // No need to pass arguments to CalibrateEncoder
+                    CalibrateEncoder(); // Update the EncoderNotchesPerInch
                 }
                 // Handle Back button scenario
                 else if (result == DialogResult.Cancel)
@@ -135,6 +134,8 @@ namespace CarolinaPowerMCCutter
                 }
             }
         }
+
+
 
 
         private void CalibrateEncoder()
